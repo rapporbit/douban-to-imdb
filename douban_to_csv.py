@@ -105,9 +105,12 @@ def url_generator(user_id):
 def export(user_id):
     urls = url_generator(user_id)
     info = []
-    page_no = 1
-    for url in urls:
-        if IS_OVER:
+    pagination = 1
+    page_no = pagination
+    for idx, url in enumerate(urls, start=1):
+        if idx < pagination:
+            continue
+        if IS_OVER:#or page_no == pagination + 5
             break
         print(f'开始处理第 {page_no} 页...')
         info.extend(get_info(url))
