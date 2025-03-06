@@ -76,7 +76,7 @@ def get_info(url):
 
             info.append([title, rating, imdb])
     else:
-        return None
+        return []
 
     return info
 
